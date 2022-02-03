@@ -1,13 +1,16 @@
 #Processing Lung Sounds
 #pkg load signal
+clear all;
 
-filename(1,:) = 'LungSoundsAbbr//BP1_Asthma,I E W,P L L,70,M.wav';
-filename(2,:) = 'LungSoundsAbbr//BP2_Asthma,E W,P L L R,52,F.wav';
-#plans to automate the array to easily switch between sound library
+cd 'D:/LungSounds/ECE-Capstone-Lung-Processing'; #maps to my dir, change to where you have the files saved locally
+myfolder1 = 'LungSoundsAbbr/*.wav'; #searches the lung sound library, change to match variable l
+myfolderinfo = dir(myfolder1);
+l = 'LungSoundsAbbr/'; #folder name for specific lung sounds in use, can be changed to search different library folders
+mfin = myfolderinfo(3).name; #change this number to select file
+filename = strcat(l, mfin); #combines the folder name and file name since dir is wider than specific file
 
-[x,fs] = audioread(filename(1,:));
-
-info = audioinfo(filename(1,:))#prints audiofile details to console
+[x,fs] = audioread(filename);
+#info = audioinfo(filename(2,1))#prints audiofile details to console
 
 xlen = length(x);                   
 t = (0:length(x)-1)/fs;
@@ -34,7 +37,7 @@ Xamp = 20*log10(sqrt(PS)*sqrt(2)); #Not really sure but probably some normalizat
 x = x(:,1);
     dt = 1/fs;
     t = 0:dt:(length(x)*dt)-dt;
-    plot(t,x); xlabel('Seconds'); ylabel('Amplitude');
+    plot(t,x,'r'); xlabel('Seconds'); ylabel('Amplitude');
     
     figure
     plot(fX, Xamp)
