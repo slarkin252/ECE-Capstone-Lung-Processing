@@ -12,7 +12,8 @@ l3 = 'ActualLungSounds/';
 #myfolderinfo.name #can be used to get an output of all files in myfolderinfo in the correct order
 mfin = myfolderinfo(31).name #change this number to select file
 recordedSigs = 'Test500Hz523mVv2.wav';
-recordedLung = 'Test-3-29-2.wav';
+#recordedLung = 'Test-4-13-7.wav';
+recordedLung = 'HRT-Si-NoPress-1.wav';
 #filename = strcat(l, mfin); #combines the folder name and file name since dir is wider than specific file
 #filename = strcat(l2, recordedSigs); #used for the newly recorded signals
 filename = strcat(l3, recordedLung);#used to pull from different directory
